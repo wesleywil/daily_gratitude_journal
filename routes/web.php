@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/tip-messages', [TipMessageController::class, 'index']);
+Route::get('/gratitude', [GratitudeController::class, 'index']);
 Route::post('/gratitude', [GratitudeController::class, 'store']);
