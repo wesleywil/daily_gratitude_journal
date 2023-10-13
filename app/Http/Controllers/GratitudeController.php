@@ -4,10 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Gratitude;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GratitudeController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $query = $request->input('search');
+        if (empty($query)) {
+            $gratitudes = Gratitude::all();
+        } else {
+            $gratitudes = Gratitude::whereYear('created_at', $query)->get();
+        }
+
+
+        return view('templates/header')
+            . view('pages/gratitude', ['gratitudes' => $gratitudes])
+            . view('templates/footer');
+    }
     public function store(Request $request)
     {
         if (empty($request->input('message'))) {
