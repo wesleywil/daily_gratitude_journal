@@ -8,3 +8,4 @@
     <title>Daily Gratitude Journal</title>
 </head>
 <body class="min-w-screen min-h-screen flex flex-col items-center bg-[#efedd3]">
+    @include('templates/menu')
