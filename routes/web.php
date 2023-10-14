@@ -22,4 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/tip-messages', [TipMessageController::class, 'index']);
 Route::get('/gratitude', [GratitudeController::class, 'index']);
+Route::get('/gratitude/{id}', [GratitudeController::class, 'show']);
 Route::post('/gratitude', [GratitudeController::class, 'store']);
+Route::post('/gratitude/{id}', [GratitudeController::class, 'update']);
+Route::match(['get', 'post'], 'gratitude/{id}/delete', [GratitudeController::class, 'delete']);
