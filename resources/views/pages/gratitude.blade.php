@@ -12,10 +12,10 @@ use Illuminate\Support\Str;
                 <button type="submit" class="px-2 bg-green-400 hover:bg-green-600 rounded-r">Search</button>
             </form>
         </div>
-        <h2 class="mx-2 font-semibold">Messages</h2>
         <table class="table-fixed">
             <thead>
               <tr>
+                <th class="bg-red-400 border border-black">ID</th>
                 <th class="bg-red-400 border border-black">Date</th>
                 <th class="bg-red-400 border border-black">Message</th>
                 <th class="bg-red-400 border border-black">Actions</th>
@@ -24,12 +24,13 @@ use Illuminate\Support\Str;
             <tbody>
                 @foreach ($gratitudes as $gratitude)
                 <tr>
+                  <td class="px-2 py-1 border border-black">{{$gratitude->id}}</td>
                     <td class="px-2 py-1 border border-black">{{$gratitude->created_at->format('m-d-Y')}}</td>
                     <td class="px-2 py-1 border border-black">{{Str::limit($gratitude->message, $limit = 50, $end = '...')}}</td>
                     
                     <td class="px-2 py-1 border border-black">
-                        <button class="px-2 bg-green-400 hover:bg-green-600 rounded">View</button>
-
+                        <a href="/gratitude/{{$gratitude->id}}" class="px-2 bg-green-400 hover:bg-green-600 rounded">View</a>
+                        <a href="/gratitude/{{$gratitude->id}}/delete" class="px-2 bg-red-400 hover:bg-red-600 rounded">Delete</a>
                     </td>
                   </tr>
                 @endforeach
