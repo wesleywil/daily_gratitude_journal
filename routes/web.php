@@ -17,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/tip-messages', [TipMessageController::class, 'index']);
+Route::get('/logout', [UserController::class, 'logout']);
 
 // Gratitude Routes
 Route::middleware(['auth'])->group(function () {
