@@ -1,0 +1,5 @@
+.pattern4 {
+    background-color: #fefbfc;
+    background-image: repeating-linear-gradient(-45deg, rgba(75, 55, 53, 0.2), rgba(75, 55, 53, 0.2) 1px, transparent 1px, transparent 6px);
+    background-size: 4px 4px;
+}
