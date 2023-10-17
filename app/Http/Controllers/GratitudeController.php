@@ -3,13 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gratitude;
+use App\Models\TipMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class GratitudeController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
+    {
+        $randomMsg = TipMessage::inRandomOrder()->first();
+
+        if ($randomMsg) {
+            $message = $randomMsg->message;
+            return view('templates/header')
+                . view('pages/gratitude/gratitude_create', ['message' => $message])
+                . view('templates/footer');
+        }
+    }
+
+    public function all(Request $request)
     {
         $query = $request->input('search');
         if (empty($query)) {
@@ -20,7 +33,7 @@ class GratitudeController extends Controller
 
 
         return view('templates/header')
-            . view('pages/gratitude', ['gratitudes' => $gratitudes])
+            . view('pages/gratitude/gratitude', ['gratitudes' => $gratitudes])
             . view('templates/footer');
     }
 
@@ -30,11 +43,11 @@ class GratitudeController extends Controller
 
         if (empty($gratitute)) {
             return view('templates/header')
-                . view('pages/not_found', ['message' => 'Gratitude Message Does Not Exist'])
+                . view('pages/utils/not_found', ['message' => 'Gratitude Message Does Not Exist'])
                 . view('templates/footer');
         } else {
             return view('templates/header')
-                . view('pages/gratitude_details', ['gratitude' => $gratitute])
+                . view('pages/gratitude/gratitude_details', ['gratitude' => $gratitute])
                 . view('templates/footer');
         }
     }
@@ -93,11 +106,11 @@ class GratitudeController extends Controller
                 return redirect('/gratitude');
             }
             return view('templates/header')
-                . view('pages/gratitude_delete', ['gratitude' => $gratitude])
+                . view('pages/gratitude/gratitude_delete', ['gratitude' => $gratitude])
                 . view('templates/footer');
         }
         return view('templates/header')
-            . view('pages/not_found', ['message' => 'Gratitude Message Does Not Exist'])
+            . view('pages/utils/not_found', ['message' => 'Gratitude Message Does Not Exist'])
             . view('templates/footer');
 
 

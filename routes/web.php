@@ -18,12 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/tip-messages', [TipMessageController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/logout', [UserController::class, 'logout']);
 
 // Gratitude Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
-    Route::get('/gratitude', [GratitudeController::class, 'index']);
+    Route::get('/gratitude/create', [GratitudeController::class, 'index']);
+    Route::get('/gratitude', [GratitudeController::class, 'all']);
     Route::get('/gratitude/{id}', [GratitudeController::class, 'show']);
     Route::post('/gratitude', [GratitudeController::class, 'store']);
     Route::post('/gratitude/{id}', [GratitudeController::class, 'update']);

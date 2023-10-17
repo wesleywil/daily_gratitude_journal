@@ -30,7 +30,7 @@ class UserController extends Controller
             return redirect()->with('message', 'User registered successfully');
         } else {
             return view('templates/header')
-                . view('pages/register')
+                . view('pages/utils/register')
                 . view('templates/footer');
         }
 
@@ -53,7 +53,7 @@ class UserController extends Controller
             }
         } else {
             return view('templates/header')
-                . view('pages/login')
+                . view('pages/utils/login')
                 . view('templates/footer');
         }
 
