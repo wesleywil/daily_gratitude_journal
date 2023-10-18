@@ -24,11 +24,12 @@ class GratitudeController extends Controller
 
     public function all(Request $request)
     {
+
         $query = $request->input('search');
         if (empty($query)) {
-            $gratitudes = Gratitude::all();
+            $gratitudes = Gratitude::where("userId", Auth::user()->id)->get();
         } else {
-            $gratitudes = Gratitude::whereYear('created_at', $query)->get();
+            $gratitudes = Gratitude::where("userId", Auth::user()->id)->whereYear('created_at', $query)->get();
         }
 
 
@@ -39,7 +40,7 @@ class GratitudeController extends Controller
 
     public function show(string $id)
     {
-        $gratitute = Gratitude::find($id);
+        $gratitute = Gratitude::where('userId', Auth::user()->id)->find($id);
 
         if (empty($gratitute)) {
             return view('templates/header')
