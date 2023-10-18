@@ -27,7 +27,7 @@ class UserController extends Controller
 
             $user->save();
 
-            return redirect()->with('message', 'User registered successfully');
+            return redirect('/login')->with('message', 'User registered successfully');
         } else {
             return view('templates/header')
                 . view('pages/utils/register')
@@ -49,7 +49,7 @@ class UserController extends Controller
                 //Authentication passed...
                 return redirect('/gratitude');
             } else {
-                return redirect()->with('message', 'Unauthorized');
+                return redirect('/login')->with('message', 'Wrong password or e-mail');
             }
         } else {
             return view('templates/header')

@@ -4,7 +4,9 @@
         @csrf
         <input type="email" name="email" placeholder="E-mail" class="px-2 py-1 outline-[#c14875] border border-[#4b3735] rounded">
         <input type="password" name="password" placeholder="Password" class="px-2 py-1 outline-[#c14875] border border-[#4b3735] rounded">
-        
+        @if (session('message'))
+            <h2 class="text-xl text-[#c14875] font-bold">{{session('message')}}</h2>
+        @endif
         <div class="flex gap-4 justify-center">
             <button class="px-2 py-1 text-[#fefbfc] bg-[#4b3735] hover:bg-[#c14875] rounded transform duration-700 ease-in-out">Submit</button>
             <button type="button" class="px-2 py-1 text-[#fefbfc] bg-[#4b3735] hover:bg-[#c14875] rounded transform duration-700 ease-in-out">Cancel</button>
