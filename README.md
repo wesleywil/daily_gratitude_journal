@@ -10,6 +10,28 @@ A project that allows users to write some daily gratitudes in a platform that be
 
 **FrontEnd:** HTML(Blade), Tailwindcss
 
+## Screenshots
+
+### Home
+
+![Homepage](https://i.imgur.com/VzyHjEk.png)
+
+### Journal
+
+![Journal](https://i.imgur.com/03eoL42.png)
+
+### Gratitude List\*
+
+![Gratitudes](https://i.imgur.com/4KdTYt9.png)
+
+### Gratitude Detils/Update
+
+![DEMO](https://i.imgur.com/d1p0F8J.png)
+
+### Demo
+
+![DEMO](https://i.imgur.com/HG49O8P.gif)
+
 ## Run Locally
 
 ### Clone the project
